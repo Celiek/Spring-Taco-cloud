@@ -17,18 +17,49 @@ import org.springframework.web.bind.annotation.*;
 import lombok.extern.slf4j.Slf4j;
 import tacos.Ingredient;
 import tacos.Ingredient.Type;
+import tacos.Order;
 import tacos.Taco;
 import tacos.data.IngredientRepository;
+import tacos.data.TacoRepository;
 
 @Slf4j
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("order")
 public class DesignTacoController {
+
+		@ModelAttribute( name = "order")
+		public Order order(){
+			return new Order();
+		}
+
+		@ModelAttribute(name = "taco")
+		public Taco taco() {
+			return new Taco();
+		}
+
+		@PostMapping
+		public String processDesign(
+				@Valid Taco design, Errors errors,
+				@ModelAttribute Order order){
+			if (errors.hasErrors()){
+				return "design";
+			}
+			Taco saved = designRepo.save(design);
+			order.addDesign(saved);
+
+			return "redirect:/orders/current";
+		}
+
+
+
 	private final IngredientRepository ingredientRepo;
+	private TacoRepository designRepo;
+
 
 	@Autowired
-	public DesignTacoController (IngredientRepository ingredientRepo){
+	public DesignTacoController (IngredientRepository ingredientRepo, TacoRepository designRepo) {
+		this.designRepo = designRepo;
 		this.ingredientRepo = ingredientRepo;
 	}
 

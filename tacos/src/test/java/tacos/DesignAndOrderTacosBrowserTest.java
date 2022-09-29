@@ -86,7 +86,7 @@ public class DesignAndOrderTacosBrowserTest {
     assertDesignPageElements();
 
     for (String ingredient : ingredients) {
-      browser.findElementByCssSelector("input[value='" + ingredient + "']").click();      
+      browser.findElementByCssSelector("input[value='" + ingredient + "']").click();
     }
     browser.findElementByCssSelector("input#name").sendKeys(name);
     browser.findElementByCssSelector("form").submit();

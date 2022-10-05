@@ -114,15 +114,4 @@ public class DesignTacoController {
               .filter(x -> x.getType().equals(type))
               .collect(Collectors.toList());
   }
-
-  /*
-//tag::classShell[]
-
-  ...
-
-//end::classShell[]
-   */
-//tag::classShell[]
-
 }
-//end::classShell[]

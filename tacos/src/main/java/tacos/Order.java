@@ -7,40 +7,37 @@ import org.hibernate.validator.constraints.CreditCardNumber;
 
 import lombok.Data;
 
-import java.sql.Date;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Data
 public class Order {
-  private Long id;
-  //może powodować probelmy implementacja biblioteki sql
-  private Date createdAt;
 
-  //end::allButValidation[]
-  @NotBlank(message="Name is required")
-  //tag::allButValidation[]
-  private String name;
-  //end::allButValidation[]
+  private Long id;
+  private Date placedAt;
+
+  @NotBlank(message="Delivery name is required")
+  private String DeliveryName;
 
   @NotBlank(message="Street is required")
   //tag::allButValidation[]
-  private String street;
+  private String deliveryStreet;
   //end::allButValidation[]
 
   @NotBlank(message="City is required")
   //tag::allButValidation[]
-  private String city;
+  private String deliveryCity;
   //end::allButValidation[]
 
   @NotBlank(message="State is required")
   //tag::allButValidation[]
-  private String state;
+  private String deliveryState;
   //end::allButValidation[]
 
   @NotBlank(message="Zip code is required")
   //tag::allButValidation[]
-  private String zip;
+  private String deliveryZip;
   //end::allButValidation[]
 
   @CreditCardNumber(message="Not a valid credit card number")

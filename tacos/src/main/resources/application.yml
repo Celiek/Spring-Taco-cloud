@@ -1,0 +1,14 @@
+#spring:
+#  datasource:
+#    url: C:\Users\Celiek\Documents\Java\Spring\Spring-Taco-cloud\tacos\src\main\resources\schema.sql
+#    username: sa
+#    password: password
+#    driverClassName: org.h2.JDBC
+#  h2:
+#    console:
+#      path: /h2-console
+#      settings.trace: false
+#      setting.web-allow-others: false
+#      enabled: true
+#  jpa:
+#    spring.jpa.database-platform: org.hibernate.dialect.H2Dialect

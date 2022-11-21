@@ -23,7 +23,7 @@
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
-    <java.version>1.8</java.version>
+    <java.version>17</java.version>
     <!-- H2 1.4.197 breaks auto-incrementing identity columns for some reason -->
     <h2.version>1.4.196</h2.version>
   </properties>

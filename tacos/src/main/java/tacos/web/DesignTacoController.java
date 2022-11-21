@@ -22,7 +22,6 @@ import tacos.Taco;
 import tacos.data.IngredientRepository;
 import tacos.data.TacoRepository;
 
-@Slf4j
 @Controller
 @RequestMapping("/design")
 @SessionAttributes("order")
@@ -42,8 +41,8 @@ public class DesignTacoController {
 
 		@PostMapping
 		public String processDesign(
-				@Valid Taco design, Errors errors,
-				@ModelAttribute Order order){
+				@Valid @ModelAttribute("design") Taco design, Errors errors,
+				Order order){
 			if (errors.hasErrors()){
 				return "design";
 			}
@@ -54,7 +53,8 @@ public class DesignTacoController {
 		}
 
 	@Autowired
-	public DesignTacoController (IngredientRepository ingredientRepo, TacoRepository designRepo) {
+	public DesignTacoController (IngredientRepository ingredientRepo,
+								 TacoRepository designRepo) {
 		this.ingredientRepo = ingredientRepo;
 		this.designRepo = designRepo;
 	}
@@ -70,6 +70,8 @@ public class DesignTacoController {
 		  model.addAttribute(type.toString().toLowerCase(),
 				  filterByType(ingredients, type));
 	  }
+
+	  model.addAttribute("design", new Taco());
     return "design";
   }
 

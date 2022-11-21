@@ -5,6 +5,9 @@ import java.sql.SQLException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Repository;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
 import tacos.Ingredient;
 
 @Repository
@@ -16,6 +19,13 @@ public class JdbcIngredientRepository
     @Autowired
     public JdbcIngredientRepository(JdbcTemplate jdbc){
         this.jdbc = jdbc;
+    }
+    //srawdzenie czy działa thymeleaf
+    @RequestMapping(method = RequestMethod.GET)
+    ModelAndView index(){
+        ModelAndView mav = new ModelAndView("design");
+        mav.addObject("version" , "0.0.1");
+        return mav;
     }
 
     @Override

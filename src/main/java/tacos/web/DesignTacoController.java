@@ -29,7 +29,7 @@ import tacos.data.UserRepository;
 
 @Controller
 @RequestMapping("/design")
-@SessionAttributes("tacoOrder")
+@SessionAttributes("order")
 @Slf4j
 public class DesignTacoController {
 
@@ -73,8 +73,8 @@ public class DesignTacoController {
 
   @ModelAttribute(name="user")
   public User user(Principal principal) {
-    String usernname = principal.getName();
-    User user = userRepo.findByUsername(usernname);
+    String username = principal.getName();
+    User user = userRepo.findByUsername(username);
 
     return user;
   }

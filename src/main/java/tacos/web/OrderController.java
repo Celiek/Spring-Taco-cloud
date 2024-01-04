@@ -51,8 +51,8 @@ public class OrderController {
 
   @PostMapping
   public String processOrder(@Valid TacoOrder order, Errors errors,
-                             SessionStatus sessionStatus,
-                             @AuthenticationPrincipal User user) {
+               SessionStatus sessionStatus,
+               @AuthenticationPrincipal User user) {
 
     if (errors.hasErrors()) {
       return "orderForm";
